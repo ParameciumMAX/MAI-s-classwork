@@ -1,0 +1,43 @@
+ul
+{
+    list-style-type: none;
+}
+
+li
+{
+    
+}
+
+#Title
+{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 5em;
+}
+
+
+iframe
+{
+    width: 420px;
+    height: 320px;
+    text-align: center;
+
+}
+
+p
+{
+    text-align: center;
+    font-size: 2em;
+}
+
+body
+{
+    background-color: yellow;
+}
+
+#divbody
+{
+    border: 10px;
+    background-color: rgb(22, 22, 139);
+
+}
