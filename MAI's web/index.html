@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>麥宸源作品集</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="#top">Portfolio</a>
+
+      <input id="navToggle" class="nav__toggle" type="checkbox" />
+      <label class="nav__hamburger" for="navToggle" aria-label="開關選單">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="nav__links">
+        <a href="#works">作品</a>
+        <a href="#about">關於我</a>
+        <a href="#skills">技能</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero (Parallax) -->
+  <main id="top">
+    <section class="hero parallax">
+      <div class="hero__overlay"></div>
+
+      <div class="hero__content container">
+        <p class="eyebrow">學生作品集</p>
+        <h1 class="title">你好，我是 <span class="accent">麥宸源</span></h1>
+        <p class="subtitle">
+          我把學習與專案整理在這裡：能看見我的設計思考、技術能力與成長過程。
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn" href="#works">看作品</a>
+          <a class="btn btn--ghost" href="#contact">找我合作</a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <div class="stat__num">8+</div>
+            <div class="stat__label">專案作品</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">3</div>
+            <div class="stat__label">擅長領域</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">∞</div>
+            <div class="stat__label">持續進步</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 小提示：讓滾動更有「層次感」 -->
+      <div class="scrollHint" aria-hidden="true">
+        <span>Scroll</span>
+        <i></i>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works" class="section container">
+      <div class="section__head">
+        <h2>作品集</h2>
+        <p>挑選幾個代表作：點進去可放 Demo / GitHub / 設計稿連結。</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card__thumb thumb thumb--a"></div>
+          <div class="card__body">
+            <h3>作品 01：互動式網頁</h3>
+            <p>以視差與動畫做出故事感，支援手機與桌機。</p>
+            <div class="chipRow">
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JS</span>
+            </div>
+            <div class="card__actions">
+              <a class="link" href="#" target="_blank" rel="noopener">Demo</a>
+              <a class="link" href="#" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__thumb thumb thumb--b"></div>
+          <div class="card__body">
+            <h3>作品 02：作品集網站</h3>
+            <p>排版清楚、重點明確，強調專案成果與過程。</p>
+            <div class="chipRow">
+              <span class="chip">RWD</span><span class="chip">SEO</span><span class="chip">Layout</span>
+            </div>
+            <div class="card__actions">
+              <a class="link" href="#" target="_blank" rel="noopener">Demo</a>
+              <a class="link" href="#" target="_blank" rel="noopener">Behance</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__thumb thumb thumb--c"></div>
+          <div class="card__body">
+            <h3>作品 03：小專案 / 互動遊戲</h3>
+            <p>把設計與程式整合，做出可玩可展示的互動。</p>
+            <div class="chipRow">
+              <span class="chip">UI</span><span class="chip">Animation</span><span class="chip">Prototype</span>
+            </div>
+            <div class="card__actions">
+              <a class="link" href="#" target="_blank" rel="noopener">Demo</a>
+              <a class="link" href="#" target="_blank" rel="noopener">Notion</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About (Parallax strip) -->
+    <section id="about" class="strip parallax parallax--soft">
+      <div class="container strip__inner">
+        <div class="strip__text">
+          <h2>關於我</h2>
+          <p>
+            我是多媒體設計系相關背景的學生，喜歡把「視覺、互動、程式」組合成完整作品。
+            我在意的是：畫面好看之外，也要好用、好理解、好維護。
+          </p>
+          <p class="muted">
+            可把這段改成你的自介：學校、專長、想找的實習/工作方向、喜歡的風格。
+          </p>
+        </div>
+        <div class="strip__box">
+          <div class="profile">
+            <div class="avatar" aria-hidden="true"></div>
+            <div>
+              <div class="profile__name">麥宸源</div>
+              <div class="profile__meta">UI / Web / Motion</div>
+              <div class="profile__meta muted">Taichung · Taiwan</div>
+            </div>
+          </div>
+          <div class="kpiRow">
+            <div class="kpi"><b>10+</b><span>海報/視覺</span></div>
+            <div class="kpi"><b>8+</b><span>網頁作品</span></div>
+            <div class="kpi"><b>5+</b><span>互動專案</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section container">
+      <div class="section__head">
+        <h2>技能</h2>
+        <p>用「你真的會的」來寫，面試/交作業都更有說服力。</p>
+      </div>
+
+      <div class="skills">
+        <div class="skill">
+          <div class="skill__top">
+            <span>HTML / CSS</span><span class="muted">80%</span>
+          </div>
+          <div class="bar"><i style="width:80%"></i></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill__top">
+            <span>JavaScript</span><span class="muted">65%</span>
+          </div>
+          <div class="bar"><i style="width:65%"></i></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill__top">
+            <span>UI 設計 / 排版</span><span class="muted">75%</span>
+          </div>
+          <div class="bar"><i style="width:75%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section container">
+      <div class="section__head">
+        <h2>聯絡我</h2>
+        <p>你可以放 Email、IG、Behance、GitHub、Notion 作品集。</p>
+      </div>
+
+      <div class="contact">
+        <a class="contact__item" href="mailto:you@example.com">a41923960@gmail.com</a>
+        <a class="contact__item" href="#" target="_blank" rel="noopener">GitHub</a>
+        <a class="contact__item" href="#" target="_blank" rel="noopener">Behance</a>
+        <a class="contact__item" href="#" target="_blank" rel="noopener">Notion</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span class="muted">© <span id="year"></span>麥宸源</span>
+        <a class="muted" href="#top">回到頂部 ↑</a>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>
