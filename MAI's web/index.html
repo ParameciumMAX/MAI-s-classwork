@@ -3,211 +3,313 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>麥宸源作品集</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>球隊介紹｜NUTC Volleyball Team Page</title>
 
-  <script src="script.js"></script>
+  <!-- ✅ Bootstrap CSS（一定要有） -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ✅ 你的 CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Navbar -->
-  <header class="nav">
-    <div class="nav__inner">
-      <a class="brand" href="#top">Portfolio</a>
+  <!-- Navbar (Bootstrap RWD) -->
+  <nav class="navbar navbar-expand-lg navbar-dark nav-blur sticky-top border-bottom border-light border-opacity-10">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#top">NUTC Volleyball Team Page</a>
 
-      <input id="navToggle" class="nav__toggle" type="checkbox" />
-      <label class="nav__hamburger" for="navToggle" aria-label="開關選單">
-        <span></span><span></span><span></span>
-      </label>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+        aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <nav class="nav__links">
-        <a href="#works">作品</a>
-        <a href="#about">關於我</a>
-        <a href="#skills">技能</a>
-        <a href="#contact">聯絡</a>
-      </nav>
+      <div id="navMain" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#team">球隊</a></li>
+          <li class="nav-item"><a class="nav-link" href="#roster">球員</a></li>
+          <li class="nav-item"><a class="nav-link" href="#schedule">賽程</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">聯絡</a></li>
+        </ul>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Hero (Parallax) -->
   <main id="top">
-    <section class="hero parallax">
-      <div class="hero__overlay"></div>
+    <!-- Hero (Parallax: GSAP 會動背景與前景層) -->
+    <header class="hero hero-parallax d-flex align-items-center">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
 
-      <div class="hero__content container">
-        <p class="eyebrow">學生作品集</p>
-        <h1 class="title">你好，我是 <span class="accent">麥宸源</span></h1>
-        <p class="subtitle">
-          我把學習與專案整理在這裡：能看見我的設計思考、技術能力與成長過程。
+      <div class="container position-relative z-1 py-5">
+        <p class="eyebrow mb-2">台中科大 男排球隊 介紹網站</p>
+
+        <h1 class="display-4 fw-black lh-1 mb-3">
+          <span class="accent">台中科大</span> 排球隊
+        </h1>
+
+        <p class="lead text-white mb-4" style="max-width: 60ch;">
+          你對排球充滿熱情嗎？你想在激烈的比賽中展現自我嗎？<br>
+          無論你是排球高手還是剛開始接觸排球，我們歡迎每一位有夢想、有毅力的你加入我們的行列！<br>
+          想要在大學、五專時期留下更多有關排球的熱血珍貴回憶嗎？<br>
+          那就快加入中科男排吧！
         </p>
 
-        <div class="hero__cta">
-          <a class="btn" href="#works">看作品</a>
-          <a class="btn btn--ghost" href="#contact">找我合作</a>
+        <div class="d-flex gap-2 flex-wrap mb-4">
+          <a class="btn btn-accent" href="#roster">看球員名單</a>
+          <a class="btn btn-outline-light btn-ghost" href="#schedule">看賽程</a>
         </div>
 
-        <div class="hero__stats">
-          <div class="stat">
-            <div class="stat__num">8+</div>
-            <div class="stat__label">專案作品</div>
+        <!-- Bootstrap RWD grid -->
+        <div class="row g-3 mt-2" style="max-width: 760px;">
+          <div class="col-12 col-md-4">
+            <div class="stat p-3 h-100">
+              <div class="stat__num">16</div>
+              <div class="stat__label">隊員人數</div>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat__num">3</div>
-            <div class="stat__label">擅長領域</div>
+          <div class="col-12 col-md-4">
+            <div class="stat p-3 h-100">
+              <div class="stat__num">4</div>
+              <div class="stat__label">訓練日/週</div>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat__num">∞</div>
-            <div class="stat__label">持續進步</div>
+          <div class="col-12 col-md-4">
+            <div class="stat p-3 h-100">
+              <div class="stat__num">2026</div>
+              <div class="stat__label">賽季</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 小提示：讓滾動更有「層次感」 -->
       <div class="scrollHint" aria-hidden="true">
-        <span>Scroll</span>
-        <i></i>
+        <span>Scroll</span><i></i>
       </div>
-    </section>
+    </header>
 
-    <!-- Works -->
-    <section id="works" class="section container">
-      <div class="section__head">
-        <h2>作品集</h2>
-        <p>挑選幾個代表作：點進去可放 Demo / GitHub / 設計稿連結。</p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="card__thumb thumb thumb--a"></div>
-          <div class="card__body">
-            <h3>作品 01：互動式網頁</h3>
-            <p>以視差與動畫做出故事感，支援手機與桌機。</p>
-            <div class="chipRow">
-              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JS</span>
-            </div>
-            <div class="card__actions">
-              <a class="link" href="#" target="_blank" rel="noopener">Demo</a>
-              <a class="link" href="#" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__thumb thumb thumb--b"></div>
-          <div class="card__body">
-            <h3>作品 02：作品集網站</h3>
-            <p>排版清楚、重點明確，強調專案成果與過程。</p>
-            <div class="chipRow">
-              <span class="chip">RWD</span><span class="chip">SEO</span><span class="chip">Layout</span>
-            </div>
-            <div class="card__actions">
-              <a class="link" href="#" target="_blank" rel="noopener">Demo</a>
-              <a class="link" href="#" target="_blank" rel="noopener">Behance</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card__thumb thumb thumb--c"></div>
-          <div class="card__body">
-            <h3>作品 03：小專案 / 互動遊戲</h3>
-            <p>把設計與程式整合，做出可玩可展示的互動。</p>
-            <div class="chipRow">
-              <span class="chip">UI</span><span class="chip">Animation</span><span class="chip">Prototype</span>
-            </div>
-            <div class="card__actions">
-              <a class="link" href="#" target="_blank" rel="noopener">Demo</a>
-              <a class="link" href="#" target="_blank" rel="noopener">Notion</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- About (Parallax strip) -->
-    <section id="about" class="strip parallax parallax--soft">
-      <div class="container strip__inner">
-        <div class="strip__text">
-          <h2>關於我</h2>
-          <p>
-            我是多媒體設計系相關背景的學生，喜歡把「視覺、互動、程式」組合成完整作品。
-            我在意的是：畫面好看之外，也要好用、好理解、好維護。
-          </p>
-          <p class="muted">
-            可把這段改成你的自介：學校、專長、想找的實習/工作方向、喜歡的風格。
-          </p>
+    <!-- Team -->
+    <section id="team" class="section py-5">
+      <div class="container">
+        <div class="section__head mb-4">
+          <h2 class="h1 fw-black mb-2">球隊介紹</h2>
+          <p class="text-white-50 mb-0">中科男排會有<br>
+            ❶超帥專業教練指導，針對技術和戰術進行全面提升<br>
+            ❷參與各大賽事（大專盃、永信盃、亞瑟士盃等）<br>
+            ❸一群熱愛排球的猛男隊友。</p>
         </div>
-        <div class="strip__box">
-          <div class="profile">
-            <div class="avatar" aria-hidden="true"></div>
-            <div>
-              <div class="profile__name">麥宸源</div>
-              <div class="profile__meta">UI / Web / Motion</div>
-              <div class="profile__meta muted">Taichung · Taiwan</div>
+
+        <div class="row g-3">
+          <div class="col-12 col-lg-6">
+            <div class="panel h-100">
+              <h3 class="h5 fw-bold mb-2">我們的風格</h3>
+              <p class="text-white-50 mb-3">
+                以「一傳穩定」與「快速節奏」為核心，強調團隊串連與防守反擊。<br>
+                訓練分成：基本功、戰術、體能、比賽模擬。
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="chip">快攻</span>
+                <span class="chip">防守反擊</span>
+                <span class="chip">團隊串連</span>
+              </div>
             </div>
           </div>
-          <div class="kpiRow">
-            <div class="kpi"><b>10+</b><span>海報/視覺</span></div>
-            <div class="kpi"><b>8+</b><span>網頁作品</span></div>
-            <div class="kpi"><b>5+</b><span>互動專案</span></div>
+
+          <div class="col-12 col-lg-6">
+            <div class="panel h-100">
+              <h3 class="h5 fw-bold mb-2">訓練時間</h3>
+              <p class="text-white-50 mb-3">
+                例：一、三、四 19:00–22:00(室外場)<br>
+                週末：日 19:30-22:00(室內場)<br>
+                訓練/友誼賽（視賽季調整）
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="chip">平日訓練</span>
+                <span class="chip">友誼賽</span>
+                <span class="chip">體能強化</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="section container">
-      <div class="section__head">
-        <h2>技能</h2>
-        <p>用「你真的會的」來寫，面試/交作業都更有說服力。</p>
+    <!-- Roster -->
+    <section id="roster" class="section py-5">
+      <div class="container">
+        <div class="section__head mb-4">
+          <h2 class="h1 fw-black mb-2">球員名單</h2>
+          <p class="text-white-50 mb-0">用 Bootstrap 卡片排版，GSAP 會做滾動淡入與視差。</p>
+        </div>
+
+        <!-- Bootstrap RWD: 1欄(手機) / 2欄(md) / 3欄(lg) -->
+        <div class="row g-3">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card player h-100 reveal">
+              <div class="player__photo player__photo--a" aria-hidden="true"></div>
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+                  <h3 class="h5 fw-bold mb-0">王小明</h3>
+                  <span class="badge role">主攻</span>
+                </div>
+                <p class="text-white-50 mb-3">特色：高點扣球、強攻果斷，擅長關鍵分終結。</p>
+
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="chip">身高 183</span>
+                  <span class="chip">慣用手 右</span>
+                  <span class="chip">背號 7</span>
+                </div>
+
+                <div class="row g-2 mb-3">
+                  <div class="col-4"><div class="miniStat"><b>進攻</b><span>88</span></div></div>
+                  <div class="col-4"><div class="miniStat"><b>發球</b><span>76</span></div></div>
+                  <div class="col-4"><div class="miniStat"><b>防守</b><span>70</span></div></div>
+                </div>
+
+                <div class="d-flex gap-3">
+                  <a class="link" href="#" target="_blank" rel="noopener">Highlight</a>
+                  <a class="link" href="#" target="_blank" rel="noopener">數據</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card player h-100 reveal">
+              <div class="player__photo player__photo--b" aria-hidden="true"></div>
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+                  <h3 class="h5 fw-bold mb-0">陳小華</h3>
+                  <span class="badge role role--alt">舉球</span>
+                </div>
+                <p class="text-white-50 mb-3">特色：節奏掌控好、分配球穩定，能讀懂攔網。</p>
+
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="chip">身高 175</span>
+                  <span class="chip">慣用手 右</span>
+                  <span class="chip">背號 3</span>
+                </div>
+
+                <div class="row g-2 mb-3">
+                  <div class="col-4"><div class="miniStat"><b>組織</b><span>90</span></div></div>
+                  <div class="col-4"><div class="miniStat"><b>防守</b><span>78</span></div></div>
+                  <div class="col-4"><div class="miniStat"><b>發球</b><span>72</span></div></div>
+                </div>
+
+                <div class="d-flex gap-3">
+                  <a class="link" href="#" target="_blank" rel="noopener">Highlight</a>
+                  <a class="link" href="#" target="_blank" rel="noopener">數據</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card player h-100 reveal">
+              <div class="player__photo player__photo--c" aria-hidden="true"></div>
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+                  <h3 class="h5 fw-bold mb-0">林小宇</h3>
+                  <span class="badge role role--green">自由球員</span>
+                </div>
+                <p class="text-white-50 mb-3">特色：一傳穩、救球反應快，專注串連與防守。</p>
+
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="chip">身高 168</span>
+                  <span class="chip">慣用手 右</span>
+                  <span class="chip">背號 12</span>
+                </div>
+
+                <div class="row g-2 mb-3">
+                  <div class="col-4"><div class="miniStat"><b>接發</b><span>92</span></div></div>
+                  <div class="col-4"><div class="miniStat"><b>防守</b><span>89</span></div></div>
+                  <div class="col-4"><div class="miniStat"><b>速度</b><span>86</span></div></div>
+                </div>
+
+                <div class="d-flex gap-3">
+                  <a class="link" href="#" target="_blank" rel="noopener">Highlight</a>
+                  <a class="link" href="#" target="_blank" rel="noopener">數據</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="skills">
-        <div class="skill">
-          <div class="skill__top">
-            <span>HTML / CSS</span><span class="muted">80%</span>
-          </div>
-          <div class="bar"><i style="width:80%"></i></div>
+    <!-- Schedule -->
+    <section id="schedule" class="section py-5">
+      <div class="container">
+        <div class="section__head mb-4">
+          <h2 class="h1 fw-black mb-2">近期賽程</h2>
+          <p class="text-white-50 mb-0">Bootstrap 表格響應式（可橫向捲動）。</p>
         </div>
 
-        <div class="skill">
-          <div class="skill__top">
-            <span>JavaScript</span><span class="muted">65%</span>
-          </div>
-          <div class="bar"><i style="width:65%"></i></div>
-        </div>
-
-        <div class="skill">
-          <div class="skill__top">
-            <span>UI 設計 / 排版</span><span class="muted">75%</span>
-          </div>
-          <div class="bar"><i style="width:75%"></i></div>
+        <div class="table-responsive schedule reveal">
+          <table class="table table-dark table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>對手</th>
+                <th>場地</th>
+                <th>狀態</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026/01/18</td>
+                <td>資工系</td>
+                <td>體育館 A 場</td>
+                <td><span class="pill">未開打</span></td>
+              </tr>
+              <tr>
+                <td>2026/01/25</td>
+                <td>財金系</td>
+                <td>體育館 B 場</td>
+                <td><span class="pill pill--alt">友誼賽</span></td>
+              </tr>
+              <tr>
+                <td>2026/02/02</td>
+                <td>護理系</td>
+                <td>校外場</td>
+                <td><span class="pill pill--green">已結束</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section container">
-      <div class="section__head">
-        <h2>聯絡我</h2>
-        <p>你可以放 Email、IG、Behance、GitHub、Notion 作品集。</p>
-      </div>
+    <section id="contact" class="section py-5">
+      <div class="container">
+        <div class="section__head mb-4">
+          <h2 class="h1 fw-black mb-2">聯絡與社群</h2>
+          <p class="text-white-50 mb-0">放 IG / FB / Email / 招募表單。</p>
+        </div>
 
-      <div class="contact">
-        <a class="contact__item" href="mailto:you@example.com">a41923960@gmail.com</a>
-        <a class="contact__item" href="#" target="_blank" rel="noopener">GitHub</a>
-        <a class="contact__item" href="#" target="_blank" rel="noopener">Behance</a>
-        <a class="contact__item" href="#" target="_blank" rel="noopener">Notion</a>
+        <div class="d-flex flex-wrap gap-2 reveal">
+          <a class="contact__item" href="mailto:team@example.com">team@example.com</a>
+          <a class="contact__item" href="#" target="_blank" rel="noopener">IG</a>
+          <a class="contact__item" href="#" target="_blank" rel="noopener">Facebook</a>
+          <a class="contact__item" href="#" target="_blank" rel="noopener">招募表單</a>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container footer__inner">
-        <span class="muted">© <span id="year"></span>麥宸源</span>
-        <a class="muted" href="#top">回到頂部 ↑</a>
+    <footer class="footer py-4 border-top border-light border-opacity-10">
+      <div class="container d-flex align-items-center justify-content-between">
+        <span class="text-white-50">© <span id="year"></span> Team Page</span>
+        <a class="text-white-50 text-decoration-none" href="#top">回到頂部 ↑</a>
       </div>
     </footer>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script src="script.js"></script>
 
 </body>
 </html>

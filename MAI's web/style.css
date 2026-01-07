@@ -250,7 +250,7 @@ body{
   align-items: stretch;
 }
 .strip__text{
-  background: rgba(255,255,255,.05);
+  background: rgba(100, 241, 107, 0.05);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 20px;
@@ -371,4 +371,316 @@ body{
 /* iOS/部分手機對 background-attachment:fixed 支援不好：改成一般背景避免抖動 */
 @supports (-webkit-touch-callout: none){
   .parallax{ background-attachment: scroll; }
+}
+
+/* 兩欄 Grid（球隊介紹用） */
+.grid--2{
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+@media (max-width: 900px){
+  .grid--2{ grid-template-columns: 1fr; }
+}
+
+/* Team 區塊面板 */
+.panel{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.05);
+  padding: 18px 18px 20px;
+  box-shadow: var(--shadow);
+}
+.panel h3{ margin: 0 0 10px; }
+
+/* Player Card（如果你之前已加過，重複也沒關係） */
+.player__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.badge{
+  font-size: 12px;
+  font-weight: 1000;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(124,92,255,.18);
+  color: rgba(255,255,255,.88);
+  white-space: nowrap;
+}
+.badge--alt{ background: rgba(0,255,209,.14); }
+.badge--green{ background: rgba(60,220,120,.14); }
+
+.player__stats{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 12px;
+}
+.miniStat{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.12);
+  border-radius: 14px;
+  padding: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+.miniStat b{
+  font-size: 12px;
+  letter-spacing:.3px;
+  color: rgba(255,255,255,.8);
+}
+.miniStat span{
+  font-weight: 1000;
+  font-size: 16px;
+}
+
+/* 球員照片示意（你可以改成自己的圖片路徑） */
+.player__photo--a{ background-image: url("https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80"); }
+.player__photo--b{ background-image: url("https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80"); }
+.player__photo--c{ background-image: url("https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1200&q=80"); }
+
+/* 賽程表 */
+.tableWrap{
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow:hidden;
+  background: rgba(255,255,255,.04);
+  box-shadow: var(--shadow);
+}
+.table{
+  width:100%;
+  border-collapse: collapse;
+}
+.table th, .table td{
+  padding: 14px 14px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  text-align:left;
+}
+.table th{
+  font-size: 12px;
+  letter-spacing:.35px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  background: rgba(0,0,0,.18);
+}
+.table tr:hover td{
+  background: rgba(255,255,255,.03);
+}
+
+/* 狀態 pill */
+.pill{
+  display:inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(124,92,255,.18);
+  font-weight: 1000;
+  font-size: 12px;
+}
+.pill--alt{ background: rgba(0,255,209,.14); }
+.pill--green{ background: rgba(60,220,120,.14); }
+
+:root{
+  --bg:#0b0f17;
+  --line: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.68);
+  --accent:#7c5cff;
+  --radius: 18px;
+  --shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+body{
+  color: var(--text);
+  background: radial-gradient(900px 500px at 20% -10%, rgba(124,92,255,.25), transparent 65%),
+              radial-gradient(900px 500px at 80% 0%, rgba(0,255,209,.12), transparent 55%),
+              var(--bg);
+}
+
+.fw-black{ font-weight: 900; }
+.accent{ color: var(--accent); }
+.eyebrow{ color: rgba(255,255,255,.72); font-weight:700; letter-spacing:.4px; }
+
+.nav-blur{
+  backdrop-filter: blur(10px);
+  background: rgba(10,14,22,.55);
+}
+
+.btn-accent{
+  background: linear-gradient(135deg, rgba(124,92,255,1), rgba(0,255,209,.7));
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.btn-ghost{ border-radius: 14px; }
+
+.section__head h2{ margin:0; }
+.section__head p{ max-width: 70ch; }
+
+.stat{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  border-radius: var(--radius);
+}
+.stat__num{ font-size: 22px; font-weight: 900; }
+.stat__label{ color: var(--muted); font-weight: 700; font-size: 13px; }
+
+.panel{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.05);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.chip{
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.82);
+}
+
+/* Hero Parallax layers */
+.hero{
+  min-height: calc(100vh - 64px);
+  position: relative;
+  overflow: hidden;
+}
+.hero__bg{
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(to bottom, rgba(11,15,23,.35), rgba(11,15,23,.92)),
+    url("https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=2400&q=80");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);
+  will-change: transform;
+}
+.hero__glow{
+  position:absolute; inset:-20%;
+  background: radial-gradient(900px 500px at 50% 20%, rgba(124,92,255,.25), transparent 70%);
+  pointer-events:none;
+  will-change: transform;
+}
+
+/* player card */
+.card.player{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(255,255,255,.04);
+  box-shadow: var(--shadow);
+}
+.player__photo{
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+.player__photo--a{ background-image: url("https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=1600&q=80"); }
+.player__photo--b{ background-image: url("https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1600&q=80"); }
+.player__photo--c{ background-image: url("https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1600&q=80"); }
+
+.badge.role{
+  border: 1px solid var(--line);
+  background: rgba(124,92,255,.18);
+  color: rgba(255,255,255,.88);
+  font-weight: 900;
+}
+.badge.role--alt{ background: rgba(0,255,209,.14); }
+.badge.role--green{ background: rgba(60,220,120,.14); }
+
+.miniStat{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.12);
+  border-radius: 14px;
+  padding: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+.miniStat b{ font-size: 12px; color: rgba(255,255,255,.8); }
+.miniStat span{ font-weight: 1000; font-size: 16px; }
+
+.link{
+  color: rgba(255,255,255,.9);
+  text-decoration:none;
+  font-weight: 900;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  padding-bottom: 2px;
+}
+.link:hover{ border-bottom-color: rgba(255,255,255,.6); }
+
+.pill{
+  display:inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(124,92,255,.18);
+  font-weight: 1000;
+  font-size: 12px;
+}
+.pill--alt{ background: rgba(0,255,209,.14); }
+.pill--green{ background: rgba(60,220,120,.14); }
+
+.contact__item{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  border-radius: 999px;
+  padding: 10px 14px;
+  text-decoration:none;
+  color: rgba(255,255,255,.88);
+  font-weight: 900;
+}
+.contact__item:hover{ background: rgba(255,255,255,.08); }
+
+/* Scroll hint */
+.scrollHint{
+  position:absolute; left:50%; bottom: 22px;
+  transform: translateX(-50%);
+  display:flex; flex-direction:column; align-items:center;
+  gap: 10px;
+  color: rgba(255,255,255,.75);
+  font-weight:700;
+  letter-spacing:.5px;
+  font-size: 12px;
+  z-index:2;
+}
+.scrollHint i{
+  width:2px; height: 34px;
+  background: rgba(255,255,255,.6);
+  display:block;
+  border-radius:999px;
+  position:relative;
+  overflow:hidden;
+}
+.scrollHint i::after{
+  content:"";
+  position:absolute; left:0; top:-10px;
+  width:2px; height: 12px;
+  background: rgba(255,255,255,.95);
+  animation: drop 1.4s infinite ease-in-out;
+}
+@keyframes drop{
+  0%{ transform: translateY(0); opacity:0; }
+  30%{ opacity:1; }
+  100%{ transform: translateY(40px); opacity:0; }
+}
+
+.hero{ position: relative; overflow: hidden; }
+.hero__bg, .hero__glow, .player__photo{
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  will-change: transform;
 }

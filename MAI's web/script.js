@@ -1,58 +1,63 @@
-/* =========================
-   基本互動 & 小動畫
-   ========================= */
-
-// footer 年份自動更新
+// 年份
 const yearEl = document.getElementById("year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// 手機版：點選導覽後自動收合選單
-const navToggle = document.getElementById("navToggle");
-const navLinks = document.querySelectorAll(".nav__links a");
+// ✅ 防呆檢查：GSAP 有沒有載到
+console.log("gsap:", window.gsap);
+console.log("ScrollTrigger:", window.ScrollTrigger);
 
-navLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    if (navToggle) navToggle.checked = false;
-  });
-});
+if (!window.gsap || !window.ScrollTrigger) {
+  console.error("❌ GSAP 或 ScrollTrigger 沒載入：請檢查 index.html CDN 與 script 順序");
+} else {
+  gsap.registerPlugin(ScrollTrigger);
 
-/* =========================
-   Scroll Reveal（簡易）
-   ========================= */
+  // ✅ 防呆檢查：元素有沒有抓到
+  const hero = document.querySelector(".hero");
+  const bg = document.querySelector(".hero__bg");
+  const glow = document.querySelector(".hero__glow");
+  console.log("hero:", hero, "bg:", bg, "glow:", glow);
 
-const revealElements = document.querySelectorAll(
-  ".card, .skill, .strip__text, .strip__box"
-);
-
-const revealObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+  if (!hero || !bg || !glow) {
+    console.error("❌ 找不到 .hero / .hero__bg / .hero__glow：請檢查 HTML class 名稱是否一致");
+  } else {
+    gsap.to(".hero__bg", {
+      yPercent: 12,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
       }
     });
-  },
-  {
-    threshold: 0.15
+
+    gsap.to(".hero__glow", {
+      yPercent: 20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // 卡片/表格淡入
+    gsap.utils.toArray(".reveal").forEach((el) => {
+      gsap.fromTo(el, { autoAlpha: 0, y: 24 }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          once: true
+        }
+      });
+    });
+
+    ScrollTrigger.refresh();
+    console.log("✅ ScrollTrigger 已初始化");
   }
-);
-
-revealElements.forEach(el => revealObserver.observe(el));
-
-/* =========================
-   Parallax 強化（選用）
-   桌機滑動背景微移
-   ========================= */
-
-const parallaxSections = document.querySelectorAll(".parallax");
-
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  parallaxSections.forEach(section => {
-    section.style.backgroundPositionY = `${scrollY * 0.35}px`;
-  });
-});
+}
