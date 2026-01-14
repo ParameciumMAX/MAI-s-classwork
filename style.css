@@ -21,7 +21,7 @@ body{
               var(--bg);
 }
 
-/* utility */
+
 .container{ width:min(1120px, 92vw); margin:0 auto; }
 .section{ padding: 90px 0; }
 .section__head h2{ margin:0 0 10px; font-size: clamp(24px, 2.3vw, 34px); }
@@ -29,33 +29,38 @@ body{
 .muted{ color:var(--muted); }
 .accent{ color:var(--accent); }
 
-/* ===== Navbar ===== */
+/* 上排選單 */
 .nav{
   position:sticky; top:0; z-index:50;
   backdrop-filter: blur(10px);
   background: rgba(10,14,22,.55);
   border-bottom: 1px solid var(--line);
 }
+
 .nav__inner{
   height: 64px;
   display:flex; align-items:center; justify-content:space-between;
   width:min(1120px, 92vw);
   margin:0 auto;
 }
+
 .brand{
   font-weight: 800;
   letter-spacing:.3px;
   color:var(--text);
   text-decoration:none;
 }
+
 .nav__links{
   display:flex; gap:22px; align-items:center;
 }
+
 .nav__links a{
   color:var(--muted);
   text-decoration:none;
   font-weight:600;
 }
+
 .nav__links a:hover{ color:var(--text); }
 
 .nav__toggle{ display:none; }
@@ -67,6 +72,7 @@ body{
   align-items:center; justify-content:center;
   gap:5px; cursor:pointer;
 }
+
 .nav__hamburger span{
   width:18px; height:2px; background: var(--text);
   display:block; opacity:.85;
@@ -76,30 +82,32 @@ body{
 .parallax{
   background-image:
     linear-gradient(to bottom, rgba(11,15,23,.35), rgba(11,15,23,.92)),
-    url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=2400&q=80");
+    url("team_picture.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Parallax核心 */
+  background-attachment: fixed;
   position: relative;
 }
 .parallax--soft{
   background-image:
     linear-gradient(to bottom, rgba(11,15,23,.55), rgba(11,15,23,.92)),
-    url("https://images.unsplash.com/photo-1451188502541-13943edb6acb?auto=format&fit=crop&w=2400&q=80");
+    url("team_picture.jpg");
 }
 
-/* ===== Hero ===== */
+
 .hero{
   min-height: calc(100vh - 64px);
   display:flex;
   align-items:center;
   padding: 70px 0 90px;
 }
+
 .hero__overlay{
   position:absolute; inset:0;
   background: radial-gradient(900px 500px at 50% 20%, rgba(61, 240, 85, 0.25), transparent 70%);
   pointer-events:none;
 }
+
 .hero__content{ position:relative; z-index:1; }
 
 .eyebrow{
@@ -108,11 +116,13 @@ body{
   font-weight:700;
   letter-spacing:.4px;
 }
+
 .title{
   margin:0 0 10px;
   font-size: clamp(34px, 4.2vw, 58px);
   line-height: 1.05;
 }
+
 .subtitle{
   margin: 0 0 22px;
   color: var(--muted);
@@ -121,6 +131,7 @@ body{
 }
 
 .hero__cta{ display:flex; gap:12px; flex-wrap:wrap; }
+
 .btn{
   display:inline-flex;
   align-items:center; justify-content:center;
@@ -132,12 +143,14 @@ body{
   background: linear-gradient(135deg, rgb(60, 210, 248), rgba(21, 245, 95, 0.7));
   box-shadow: var(--shadow);
 }
+
 .btn--ghost{
   background: transparent;
   border: 1px solid var(--line);
   color: var(--text);
   box-shadow: none;
 }
+
 .btn--ghost:hover{ background: rgba(255,255,255,.06); }
 
 .hero__stats{
@@ -147,12 +160,14 @@ body{
   gap: 12px;
   max-width: 620px;
 }
+
 .stat{
   border: 1px solid var(--line);
   background: rgba(255,255,255,.05);
   border-radius: var(--radius);
   padding: 14px 14px;
 }
+
 .stat__num{ font-size: 22px; font-weight: 900; }
 .stat__label{ color: var(--muted); font-weight: 700; font-size: 13px; }
 
@@ -167,6 +182,7 @@ body{
   font-size: 12px;
   z-index:2;
 }
+
 .scrollHint i{
   width:2px; height: 34px;
   background: rgba(255,255,255,.6);
@@ -175,6 +191,7 @@ body{
   position:relative;
   overflow:hidden;
 }
+
 .scrollHint i::after{
   content:"";
   position:absolute; left:0; top:-10px;
@@ -182,13 +199,14 @@ body{
   background: rgba(255,255,255,.95);
   animation: drop 1.4s infinite ease-in-out;
 }
+
 @keyframes drop{
   0%{ transform: translateY(0); opacity:0; }
   30%{ opacity:1; }
   100%{ transform: translateY(40px); opacity:0; }
 }
 
-/* ===== Cards / Grid ===== */
+/*球員介紹*/
 .grid{
   margin-top: 26px;
   display:grid;
@@ -208,9 +226,6 @@ body{
   background-position: center;
   filter: saturate(1.1);
 }
-.thumb--a{ background-image: url("https://images.unsplash.com/photo-1522881193457-37ae97c90590?auto=format&fit=crop&w=1200&q=80"); }
-.thumb--b{ background-image: url("https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80"); }
-.thumb--c{ background-image: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"); }
 
 .card__body{ padding: 16px 16px 18px; }
 .card h3{ margin: 0 0 8px; font-size: 18px; }
@@ -237,7 +252,7 @@ body{
 }
 .link:hover{ border-bottom-color: rgba(255,255,255,.6); }
 
-/* ===== About strip ===== */
+/*關於球隊*/
 .strip{
   padding: 85px 0;
   border-top: 1px solid var(--line);
@@ -289,7 +304,7 @@ body{
 .kpi b{ font-size: 16px; }
 .kpi span{ color: var(--muted); font-weight: 700; font-size: 12px; }
 
-/* ===== Skills ===== */
+/* 技術 */
 .skills{ margin-top: 22px; display:grid; gap: 14px; max-width: 760px; }
 .skill{
   border: 1px solid var(--line);
@@ -312,7 +327,7 @@ body{
   border-radius: 999px;
 }
 
-/* ===== Contact ===== */
+/* 聯絡方式 */
 .contact{
   margin-top: 20px;
   display:flex;
@@ -330,7 +345,7 @@ body{
 }
 .contact__item:hover{ background: rgba(255,255,255,.08); }
 
-/* ===== Footer ===== */
+/*  Footer  */
 .footer{
   border-top: 1px solid var(--line);
   padding: 22px 0;
@@ -341,7 +356,7 @@ body{
   justify-content:space-between;
 }
 
-/* ===== RWD ===== */
+
 @media (max-width: 900px){
   .grid{ grid-template-columns: 1fr; }
   .strip__inner{ grid-template-columns: 1fr; }
@@ -368,7 +383,7 @@ body{
   .nav__toggle:checked ~ .nav__links{ display:flex; }
 }
 
-/* iOS/部分手機對 background-attachment:fixed 支援不好：改成一般背景避免抖動 */
+
 @supports (-webkit-touch-callout: none){
   .parallax{ background-attachment: scroll; }
 }
@@ -391,7 +406,7 @@ body{
 }
 .panel h3{ margin: 0 0 10px; }
 
-/* Player Card（如果你之前已加過，重複也沒關係） */
+/* 球員介紹 */
 .player__top{
   display:flex;
   align-items:center;
@@ -399,6 +414,7 @@ body{
   gap: 12px;
   margin-bottom: 6px;
 }
+
 .badge{
   font-size: 12px;
   font-weight: 1000;
@@ -438,11 +454,6 @@ body{
   font-size: 16px;
 }
 
-/* 球員照片示意（你可以改成自己的圖片路徑） */
-.player__photo--a{ background-image: url("https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80"); }
-.player__photo--b{ background-image: url("https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80"); }
-.player__photo--c{ background-image: url("https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1200&q=80"); }
-
 /* 賽程表 */
 .tableWrap{
   margin-top: 18px;
@@ -472,7 +483,7 @@ body{
   background: rgba(255,255,255,.03);
 }
 
-/* 狀態 pill */
+/* 賽程狀態顏色 */
 .pill{
   display:inline-flex;
   padding: 6px 10px;
@@ -490,7 +501,7 @@ body{
   --line: rgba(255,255,255,.10);
   --text: rgba(255,255,255,.92);
   --muted: rgba(255,255,255,.68);
-  --accent:#7c5cff;
+  --accent:#3ae280;
   --radius: 18px;
   --shadow: 0 20px 60px rgba(0,0,0,.35);
 }
@@ -550,7 +561,7 @@ body{
   color: rgba(255,255,255,.82);
 }
 
-/* Hero Parallax layers */
+/* 背景圖 */
 .hero{
   min-height: calc(100vh - 64px);
   position: relative;
@@ -573,7 +584,7 @@ body{
   will-change: transform;
 }
 
-/* player card */
+/* 球員介紹 */
 .card.player{
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -628,8 +639,8 @@ body{
   color: rgba(255,255,255,.88);
   font-weight: 900;
 }
-.badge.role--alt{ background: rgba(0,255,209,.14); }
-.badge.role--green{ background: rgba(60,220,120,.14); }
+.badge.role--2{ background: rgba(196, 243, 25, 0.14); }
+.badge.role--3{ background: rgba(60,220,120,.14); }
 
 .miniStat{
   border: 1px solid var(--line);
@@ -676,7 +687,7 @@ body{
 }
 .contact__item:hover{ background: rgba(255,255,255,.08); }
 
-/* Scroll hint */
+/* 滾動動畫*/
 .scrollHint{
   position:absolute; left:50%; bottom: 22px;
   transform: translateX(-50%);
@@ -716,44 +727,32 @@ body{
   will-change: transform;
 }
 
-
-/* =========================================
-   Player Card layout fixes (prevents photo overlapping text)
-   - Keeps the photo as the top section of the card
-   - Ensures text area stays below and above any effects
-   ========================================= */
-
 .card.player{
   display: flex;
   flex-direction: column;
-  overflow: hidden ; /* keep everything inside rounded card */
+  overflow: hidden ;
 }
 
-/* Photo header */
 .card.player .player__photo{
   flex: 0 0 auto;
-  height: 260px;         /* adjust as needed */
-  background-size: contain;        /* change to 'contain' if you must keep full image */
+  height: 260px;         
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* Only round the top corners (card rounds the rest) */
-  border-radius: 0 !important;
+  border-radius: 0;
 
 
   position: relative;
   z-index: 0;
 }
 
-/* Text area */
+/* 介紹文 */
 .card.player .card-body{
   flex: 1 1 auto;
   position: relative;
   z-index: 1;
 }
-
-/* If you want a subtle separation so text never feels "on top of" the image,
-   uncomment the background below. */
 
 .card.player .card-body{
   background: rgba(0,0,0,.22);
@@ -761,7 +760,6 @@ body{
 }
 
 
-/* Mobile: give a bit less height */
 @media (max-width: 768px){
   .card.player .player__photo{
     height: 240px;

@@ -1,0 +1,756 @@
+:root{
+  --bg:#0b0f17;
+  --line: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.68);
+  --accent:#3ae280;
+  --radius: 18px;
+  --shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+  color:var(--text);
+  background: radial-gradient(900px 500px at 20% -10%, rgba(124,92,255,.25), transparent 65%),
+              radial-gradient(900px 500px at 80% 0%, rgba(0,255,209,.12), transparent 55%),
+              var(--bg);
+}
+
+
+.container{ width:min(1120px, 92vw); margin:0 auto; }
+.section{ padding: 90px 0; }
+.section__head h2{ margin:0 0 10px; font-size: clamp(24px, 2.3vw, 34px); }
+.section__head p{ margin:0; color:var(--muted); max-width: 60ch; }
+.muted{ color:var(--muted); }
+.accent{ color:var(--accent); }
+
+/* 上排選單 */
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(10px);
+  background: rgba(10,14,22,.55);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner{
+  height: 64px;
+  display:flex; align-items:center; justify-content:space-between;
+  width:min(1120px, 92vw);
+  margin:0 auto;
+}
+
+.brand{
+  font-weight: 800;
+  letter-spacing:.3px;
+  color:var(--text);
+  text-decoration:none;
+}
+
+.nav__links{
+  display:flex; gap:22px; align-items:center;
+}
+
+.nav__links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+}
+
+.nav__links a:hover{ color:var(--text); }
+
+.nav__toggle{ display:none; }
+.nav__hamburger{
+  display:none;
+  width:44px; height:44px;
+  border:1px solid var(--line);
+  border-radius: 12px;
+  align-items:center; justify-content:center;
+  gap:5px; cursor:pointer;
+}
+
+.nav__hamburger span{
+  width:18px; height:2px; background: var(--text);
+  display:block; opacity:.85;
+}
+
+/* ===== Parallax ===== */
+.parallax{
+  background-image:
+    linear-gradient(to bottom, rgba(11,15,23,.35), rgba(11,15,23,.92)),
+    url("team_picture.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+.parallax--soft{
+  background-image:
+    linear-gradient(to bottom, rgba(11,15,23,.55), rgba(11,15,23,.92)),
+    url("team_picture.jpg");
+}
+
+
+.hero{
+  min-height: calc(100vh - 64px);
+  display:flex;
+  align-items:center;
+  padding: 70px 0 90px;
+}
+
+.hero__overlay{
+  position:absolute; inset:0;
+  background: radial-gradient(900px 500px at 50% 20%, rgba(61, 240, 85, 0.25), transparent 70%);
+  pointer-events:none;
+}
+
+.hero__content{ position:relative; z-index:1; }
+
+.eyebrow{
+  margin:0 0 10px;
+  color: rgba(255,255,255,.72);
+  font-weight:700;
+  letter-spacing:.4px;
+}
+
+.title{
+  margin:0 0 10px;
+  font-size: clamp(34px, 4.2vw, 58px);
+  line-height: 1.05;
+}
+
+.subtitle{
+  margin: 0 0 22px;
+  color: var(--muted);
+  max-width: 58ch;
+  font-size: clamp(15px, 1.2vw, 18px);
+}
+
+.hero__cta{ display:flex; gap:12px; flex-wrap:wrap; }
+
+.btn{
+  display:inline-flex;
+  align-items:center; justify-content:center;
+  padding: 12px 16px;
+  border-radius: 14px;
+  text-decoration:none;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, rgb(60, 210, 248), rgba(21, 245, 95, 0.7));
+  box-shadow: var(--shadow);
+}
+
+.btn--ghost{
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.btn--ghost:hover{ background: rgba(255,255,255,.06); }
+
+.hero__stats{
+  margin-top: 26px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+  max-width: 620px;
+}
+
+.stat{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  border-radius: var(--radius);
+  padding: 14px 14px;
+}
+
+.stat__num{ font-size: 22px; font-weight: 900; }
+.stat__label{ color: var(--muted); font-weight: 700; font-size: 13px; }
+
+.scrollHint{
+  position:absolute; left:50%; bottom: 22px;
+  transform: translateX(-50%);
+  display:flex; flex-direction:column; align-items:center;
+  gap: 10px;
+  color: rgba(255,255,255,.75);
+  font-weight:700;
+  letter-spacing:.5px;
+  font-size: 12px;
+  z-index:2;
+}
+
+.scrollHint i{
+  width:2px; height: 34px;
+  background: rgba(255,255,255,.6);
+  display:block;
+  border-radius:999px;
+  position:relative;
+  overflow:hidden;
+}
+
+.scrollHint i::after{
+  content:"";
+  position:absolute; left:0; top:-10px;
+  width:2px; height: 12px;
+  background: rgba(255,255,255,.95);
+  animation: drop 1.4s infinite ease-in-out;
+}
+
+@keyframes drop{
+  0%{ transform: translateY(0); opacity:0; }
+  30%{ opacity:1; }
+  100%{ transform: translateY(40px); opacity:0; }
+}
+
+/*球員介紹*/
+.grid{
+  margin-top: 26px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+}
+.card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow:hidden;
+  background: rgba(255,255,255,.04);
+  box-shadow: var(--shadow);
+}
+.card__thumb{ height: 180px; }
+.thumb{
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.1);
+}
+
+.card__body{ padding: 16px 16px 18px; }
+.card h3{ margin: 0 0 8px; font-size: 18px; }
+.card p{ margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
+
+.chipRow{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 12px; }
+.chip{
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.82);
+}
+
+.card__actions{ display:flex; gap: 14px; }
+.link{
+  color: rgba(255,255,255,.9);
+  text-decoration:none;
+  font-weight: 900;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  padding-bottom: 2px;
+}
+.link:hover{ border-bottom-color: rgba(255,255,255,.6); }
+
+/*關於球隊*/
+.strip{
+  padding: 85px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.strip__inner{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 18px;
+  align-items: stretch;
+}
+.strip__text{
+  background: rgba(100, 241, 107, 0.05);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.strip__text h2{ margin:0 0 10px; }
+.strip__text p{ margin: 0 0 12px; color: var(--muted); line-height: 1.7; }
+
+.strip__box{
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.profile{ display:flex; gap: 12px; align-items:center; }
+.avatar{
+  width:56px; height:56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgb(41, 255, 226), rgba(31, 255, 80, 0.8));
+}
+.profile__name{ font-weight: 1000; font-size: 18px; }
+.profile__meta{ font-weight: 700; color: rgba(255,255,255,.72); }
+
+.kpiRow{
+  margin-top: 16px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+}
+.kpi{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.16);
+  border-radius: 14px;
+  padding: 10px;
+  display:flex; flex-direction:column; gap: 6px;
+}
+.kpi b{ font-size: 16px; }
+.kpi span{ color: var(--muted); font-weight: 700; font-size: 12px; }
+
+/* 技術 */
+.skills{ margin-top: 22px; display:grid; gap: 14px; max-width: 760px; }
+.skill{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.skill__top{ display:flex; justify-content:space-between; gap: 12px; font-weight: 900; }
+.bar{
+  margin-top: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  overflow:hidden;
+}
+.bar i{
+  display:block;
+  height:100%;
+  background: linear-gradient(90deg, rgba(124,92,255,1), rgba(0,255,209,.8));
+  border-radius: 999px;
+}
+
+/* 聯絡方式 */
+.contact{
+  margin-top: 20px;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+}
+.contact__item{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  border-radius: 999px;
+  padding: 10px 14px;
+  text-decoration:none;
+  color: rgba(255,255,255,.88);
+  font-weight: 900;
+}
+.contact__item:hover{ background: rgba(255,255,255,.08); }
+
+/*  Footer  */
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+}
+.footer__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; }
+  .strip__inner{ grid-template-columns: 1fr; }
+  .hero__stats{ grid-template-columns: 1fr; max-width: 520px; }
+}
+
+/* 手機選單 */
+@media (max-width: 720px){
+  .nav__hamburger{ display:flex; }
+  .nav__links{
+    position:absolute;
+    top:64px;
+    right: 4vw;
+    left: 4vw;
+    display:none;
+    flex-direction:column;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(10,14,22,.92);
+    backdrop-filter: blur(10px);
+  }
+  .nav__toggle:checked ~ .nav__links{ display:flex; }
+}
+
+
+@supports (-webkit-touch-callout: none){
+  .parallax{ background-attachment: scroll; }
+}
+
+/* 兩欄 Grid（球隊介紹用） */
+.grid--2{
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+@media (max-width: 900px){
+  .grid--2{ grid-template-columns: 1fr; }
+}
+
+/* Team 區塊面板 */
+.panel{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.05);
+  padding: 18px 18px 20px;
+  box-shadow: var(--shadow);
+}
+.panel h3{ margin: 0 0 10px; }
+
+/* 球員介紹 */
+.player__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.badge{
+  font-size: 12px;
+  font-weight: 1000;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(124,92,255,.18);
+  color: rgba(255,255,255,.88);
+  white-space: nowrap;
+}
+.badge--alt{ background: rgba(0,255,209,.14); }
+.badge--green{ background: rgba(60,220,120,.14); }
+
+.player__stats{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 12px;
+}
+.miniStat{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.12);
+  border-radius: 14px;
+  padding: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+.miniStat b{
+  font-size: 12px;
+  letter-spacing:.3px;
+  color: rgba(255,255,255,.8);
+}
+.miniStat span{
+  font-weight: 1000;
+  font-size: 16px;
+}
+
+/* 賽程表 */
+.tableWrap{
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow:hidden;
+  background: rgba(255,255,255,.04);
+  box-shadow: var(--shadow);
+}
+.table{
+  width:100%;
+  border-collapse: collapse;
+}
+.table th, .table td{
+  padding: 14px 14px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  text-align:left;
+}
+.table th{
+  font-size: 12px;
+  letter-spacing:.35px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  background: rgba(0,0,0,.18);
+}
+.table tr:hover td{
+  background: rgba(255,255,255,.03);
+}
+
+/* 賽程狀態顏色 */
+.pill{
+  display:inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(124,92,255,.18);
+  font-weight: 1000;
+  font-size: 12px;
+}
+.pill--alt{ background: rgba(0,255,209,.14); }
+.pill--green{ background: rgba(60,220,120,.14); }
+
+body{
+  color: var(--text);
+  background: radial-gradient(900px 500px at 20% -10%, rgba(124,92,255,.25), transparent 65%),
+              radial-gradient(900px 500px at 80% 0%, rgba(0,255,209,.12), transparent 55%),
+              var(--bg);
+}
+
+.fw-black{ font-weight: 900; }
+.accent{ color: var(--accent); }
+.eyebrow{ color: rgba(255,255,255,.72); font-weight:700; letter-spacing:.4px; }
+
+.nav-blur{
+  backdrop-filter: blur(10px);
+  background: rgba(10,14,22,.55);
+}
+
+.btn-accent{
+  background: linear-gradient(135deg, rgba(124,92,255,1), rgba(0,255,209,.7));
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.btn-ghost{ border-radius: 14px; }
+
+.section__head h2{ margin:0; }
+.section__head p{ max-width: 70ch; }
+
+.stat{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  border-radius: var(--radius);
+}
+.stat__num{ font-size: 22px; font-weight: 900; }
+.stat__label{ color: var(--muted); font-weight: 700; font-size: 13px; }
+
+.panel{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.05);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.chip{
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.82);
+}
+
+/* 背景圖 */
+.hero{
+  min-height: calc(100vh - 64px);
+  position: relative;
+  overflow: hidden;
+}
+.hero__bg{
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(to bottom, rgba(11,15,23,.35), rgba(11,15,23,.92)),
+    url("team_picture.jpg");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);
+  will-change: transform;
+}
+.hero__glow{
+  position:absolute; inset:-20%;
+  background: radial-gradient(900px 500px at 50% 20%, rgba(124,92,255,.25), transparent 70%);
+  pointer-events:none;
+  will-change: transform;
+}
+
+/* 球員介紹 */
+.card.player{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(223, 219, 219, 0.04);
+  box-shadow: var(--shadow);
+  color: #eef0ff;
+}
+
+.card.player h3 {
+  color: #ffffff;
+}
+
+.card.player .text-white-50 {
+  color: rgba(255,255,255,0.78) !important;
+}
+
+.miniStat b {
+  color: #c7cbff;
+}
+
+.miniStat span {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.player__photo{
+  height: 300px;
+  background-size: contain;
+  background-position: center;
+  will-change: transform;
+  border-radius: var(--radius);
+}
+.player__photo--1{ background-image: url("players_photos/19.JPG"); }
+.player__photo--2{ background-image: url("players_photos/01.JPG"); }
+.player__photo--3{ background-image: url("players_photos/04.JPG"); }
+.player__photo--4{ background-image: url("players_photos/05.JPG"); }
+.player__photo--5{ background-image: url("players_photos/06.JPG"); }
+.player__photo--6{ background-image: url("players_photos/07.JPG"); }
+.player__photo--7{ background-image: url("players_photos/10.JPG"); }
+.player__photo--8{ background-image: url("players_photos/11.JPG"); }
+.player__photo--9{ background-image: url("players_photos/12.JPG"); }
+.player__photo--10{ background-image: url("players_photos/16.JPG"); }
+.player__photo--11{ background-image: url("players_photos/17.JPG"); }
+.player__photo--12{ background-image: url("players_photos/18.JPG"); }
+.player__photo--13{ background-image: url("players_photos/20.JPG"); }
+
+
+.badge.role{
+  border: 1px solid var(--line);
+  background: rgba(124,92,255,.18);
+  color: rgba(255,255,255,.88);
+  font-weight: 900;
+}
+.badge.role--2{ background: rgba(196, 243, 25, 0.14); }
+.badge.role--3{ background: rgba(60,220,120,.14); }
+
+.miniStat{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.12);
+  border-radius: 14px;
+  padding: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+.miniStat b{ font-size: 12px; color: rgba(255,255,255,.8); }
+.miniStat span{ font-weight: 1000; font-size: 16px; }
+
+.link{
+  color: rgba(255,255,255,.9);
+  text-decoration:none;
+  font-weight: 900;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  padding-bottom: 2px;
+}
+.link:hover{ border-bottom-color: rgba(255,255,255,.6); }
+
+.pill{
+  display:inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(243, 28, 21, 0.18);
+  font-weight: 1000;
+  font-size: 12px;
+}
+.pill--2{ background: rgba(0, 255, 76, 0.14); }
+.pill--3{ background: rgba(73, 182, 245, 0.14); }
+
+.contact__item{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  border-radius: 999px;
+  padding: 10px 14px;
+  text-decoration:none;
+  color: rgba(255,255,255,.88);
+  font-weight: 900;
+}
+.contact__item:hover{ background: rgba(255,255,255,.08); }
+
+/* 滾動動畫*/
+.scrollHint{
+  position:absolute; left:50%; bottom: 22px;
+  transform: translateX(-50%);
+  display:flex; flex-direction:column; align-items:center;
+  gap: 10px;
+  color: rgba(255,255,255,.75);
+  font-weight:700;
+  letter-spacing:.5px;
+  font-size: 12px;
+  z-index:2;
+}
+.scrollHint i{
+  width:2px; height: 34px;
+  background: rgba(255,255,255,.6);
+  display:block;
+  border-radius:999px;
+  position:relative;
+  overflow:hidden;
+}
+.scrollHint i::after{
+  content:"";
+  position:absolute; left:0; top:-10px;
+  width:2px; height: 12px;
+  background: rgba(255,255,255,.95);
+  animation: drop 1.4s infinite ease-in-out;
+}
+@keyframes drop{
+  0%{ transform: translateY(0); opacity:0; }
+  30%{ opacity:1; }
+  100%{ transform: translateY(40px); opacity:0; }
+}
+
+.hero{ position: relative; overflow: hidden; }
+.hero__bg, .hero__glow, .player__photo{
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.card.player{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden ;
+}
+
+.card.player .player__photo{
+  flex: 0 0 auto;
+  height: 260px;         
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 0;
+
+
+  position: relative;
+  z-index: 0;
+}
+
+/* 介紹文 */
+.card.player .card-body{
+  flex: 1 1 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.card.player .card-body{
+  background: rgba(0,0,0,.22);
+  backdrop-filter: blur(2px);
+}
+
+
+@media (max-width: 768px){
+  .card.player .player__photo{
+    height: 240px;
+  }
+}
+

@@ -5,7 +5,7 @@ const app = Vue.createApp({
       rosterDesc: "中科大男排，帥氣的男球員們",
 
       players: [
-        {
+        /*{
           name: "麥宸源 - 小麥",
           role: "大砲？？",
           roleClass: "role",
@@ -24,7 +24,7 @@ const app = Vue.createApp({
         {
           name: "林詠德 - 室內哥？",
           role: "欄中、大砲",
-          roleClass: "role role--alt",
+          roleClass: "role--2",
           height: 188,
           hand: "右",
           number: 1,
@@ -40,7 +40,7 @@ const app = Vue.createApp({
         {
           name: "江立帆 - 貝貝",
           role: "自由（非自願）",
-          roleClass: "role role--green",
+          roleClass: "role--3",
           height: 168,
           hand: "右",
           number: 4,
@@ -54,7 +54,7 @@ const app = Vue.createApp({
           links: { highlight: "#", data: "#" }
         },
         {
-          name: "游孟豪--阿豪",
+          name: "游孟豪 - 阿豪",
           role: "暫無",
           roleClass: "role",
           height: 175,
@@ -72,7 +72,7 @@ const app = Vue.createApp({
         {
           name: "黃翊恩 - EN",
           role: "欄中",
-          roleClass: "role",
+          roleClass: "role--2",
           height: 175,
           hand: "右",
           number: 6,
@@ -88,7 +88,7 @@ const app = Vue.createApp({
         {
           name: "蘇子洋 - 戰地記者",
           role: "舉球",
-          roleClass: "role",
+          roleClass: "role--3",
           height: 175,
           hand: "右",
           number: 7,
@@ -120,7 +120,7 @@ const app = Vue.createApp({
         {
           name: "古承翰 - 古翰",
           role: "自由",
-          roleClass: "role",
+          roleClass: "role--2",
           height: 175,
           hand: "右",
           number: 11,
@@ -136,7 +136,7 @@ const app = Vue.createApp({
         {
           name: "潘瑋凡 - 小潘",
           role: "攔中",
-          roleClass: "role",
+          roleClass: "role--3",
           height: 175,
           hand: "右",
           number: 12,
@@ -168,7 +168,7 @@ const app = Vue.createApp({
         {
           name: "曾科誠 - 科誠",
           role: "副攻",
-          roleClass: "role",
+          roleClass: "role--2",
           height: 175,
           hand: "右",
           number: 17,
@@ -184,7 +184,7 @@ const app = Vue.createApp({
         {
           name: "吳崇瑜",
           role: "自由",
-          roleClass: "role",
+          roleClass: "role--3",
           height: 175,
           hand: "右",
           number: 18,
@@ -212,7 +212,7 @@ const app = Vue.createApp({
             { label: "防守", value: 70 }
           ],
           links: { highlight: "#", data: "#" }
-        },
+        },*/
       ]
     };
   },
@@ -222,14 +222,10 @@ const app = Vue.createApp({
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Vue 完成渲染後再啟動 GSAP
     this.$nextTick(() => initAnimations());
   }
 }).mount("#app");
 
-// =========================
-// GSAP / ScrollTrigger
-// =========================
 function initAnimations() {
   if (!window.gsap || !window.ScrollTrigger) {
     console.warn("GSAP / ScrollTrigger 未載入");
@@ -272,14 +268,37 @@ function initAnimations() {
   });
 
   gsap.utils.toArray(".reveal").forEach((el) => {
-    gsap.fromTo(el, { autoAlpha: 0, y: 24 }, {
+  gsap.fromTo(
+    el,
+    { autoAlpha: 0, y: 24 },
+    {
       autoAlpha: 1,
       y: 0,
       duration: 0.7,
       ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 85%", once: true }
-    });
-  });
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        end: "bottom 20%",
+        toggleActions: "play none play reverse"
+      }
+    }
+  );
+});
+
 
   ScrollTrigger.refresh();
 }
+
+$.ajax({
+  url: "/players",
+  method: "GET",
+  dataType: "json",
+  success: function(data) {
+    app.players = data.players;
+  },
+  error: function(error) {
+    // 處理錯誤
+  }
+});
+
